@@ -276,7 +276,11 @@ namespace Whisper
             // if we need to finish segment now - just grab all whats left
             var newBufferLen = _newBuffer.Count;
             if (!forceSegmentEnd && newBufferLen < _param.StepSamples)
+            {
+                LogUtils.Warning($"Returned from UpdateSlidingWindow due to lack of StepSamples " +
+                    $" (newBufferLen = " + newBufferLen + ", StepSamples = " + _param.StepSamples + ") on step {_step}");
                 return;
+            }
 
             // calculate how much we can get from _oldBuffer
             var oldBufferLen = _oldBuffer.Length;
