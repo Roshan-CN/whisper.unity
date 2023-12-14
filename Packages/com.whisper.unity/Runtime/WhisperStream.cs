@@ -94,6 +94,8 @@ namespace Whisper
             Channels = channels;
             
             StepSec = stepSec;
+
+            LogUtils.Verbose($"StepSec = {StepSec} ; Frequency = {Frequency} ; Channels = {Channels} ;");
             StepSamples = (int) (StepSec * Frequency * Channels);
 
             KeepSec = keepSec;
